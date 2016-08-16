@@ -16,6 +16,7 @@
         android:id="@+id/title"/>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/title"
@@ -30,13 +31,14 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp"
                 android:id="@+id/a1"/>
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:src="@drawable/red_fill"
+                android:visibility="gone"
                 android:layout_height="25dp"
                 android:id="@+id/b1"/>
             <TextView
@@ -62,13 +64,14 @@
             <ImageView
                 android:id="@+id/a2"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b2"
                 android:layout_marginLeft="5dp"
+                android:visibility="gone"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -94,13 +97,14 @@
             <ImageView
                 android:id="@+id/a3"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b3"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -126,13 +130,14 @@
             <ImageView
                 android:id="@+id/a4"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b4"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -158,13 +163,14 @@
             <ImageView
                 android:id="@+id/a5"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b5"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -190,13 +196,14 @@
             <ImageView
                 android:id="@+id/a6"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b6"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -222,13 +229,14 @@
             <ImageView
                 android:id="@+id/a7"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b7"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -254,13 +262,14 @@
             <ImageView
                 android:id="@+id/a8"
                 android:layout_width="25dp"
-                android:src="@drawable/green"
+                android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <ImageView
                 android:id="@+id/b8"
                 android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
-                android:src="@drawable/red_boarder"
+                android:visibility="gone"
+                android:src="@drawable/red_fill"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_marginLeft="10dp"
@@ -292,7 +301,7 @@
                 android:src="@drawable/green_fill"
                 android:layout_height="25dp" />
             <TextView
-                android:layout_width="265dp"
+                android:layout_width="185dp"
                 android:id="@+id/total_text"
                 android:layout_height="wrap_content"
                 android:text="Total"
@@ -344,5 +353,15 @@
 
 
     </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="420dp"/>
 
 </RelativeLayout>

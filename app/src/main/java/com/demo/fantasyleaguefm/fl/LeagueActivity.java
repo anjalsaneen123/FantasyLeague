@@ -24,44 +24,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Serializable;
-import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.app.Activity;
 
 import com.demo.fantasyleaguefm.fl.Teams.Arsenal;
-import com.demo.fantasyleaguefm.fl.Teams.Bou;
+import com.demo.fantasyleaguefm.fl.Teams.ManCity;
+import com.demo.fantasyleaguefm.fl.Teams.Middlesborough;
 import com.demo.fantasyleaguefm.fl.Teams.Burnley;
 import com.demo.fantasyleaguefm.fl.Teams.CP;
 import com.demo.fantasyleaguefm.fl.Teams.Chelsea;
@@ -140,7 +110,7 @@ public class LeagueActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeagueActivity.this, Bou.class);
+                Intent intent = new Intent(LeagueActivity.this, Middlesborough.class);
                 intent.putExtra("FILES_TO_SEND", PlayerList);
                 startActivity(intent);
             }
@@ -205,12 +175,19 @@ public class LeagueActivity extends AppCompatActivity {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, ManCity.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(LeagueActivity.this, United.class);
                 intent.putExtra("FILES_TO_SEND", PlayerList);
                 startActivity(intent);
             }
         });
-
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override

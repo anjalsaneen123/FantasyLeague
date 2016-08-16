@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".TableActivity" />
         <activity android:name=".Teams.Arsenal" />
-        <activity android:name=".Teams.Bou" />
+        <activity android:name=".Teams.Middlesborough" />
         <activity android:name=".Teams.Burnley" />
         <activity android:name=".Teams.Boro" />
         <activity android:name=".Teams.Chelsea" />
@@ -29,7 +29,8 @@
         <activity android:name=".Teams.Hull" />
         <activity android:name=".Teams.Liverpool" />
         <activity android:name=".Teams.Lexter" />
-        <activity android:name=".Teams.United"></activity>
+        <activity android:name=".Teams.United" />
+        <activity android:name=".Teams.ManCity"></activity>
     </application>
 
 </manifest>
