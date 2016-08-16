@@ -62,6 +62,14 @@ import android.app.Activity;
 
 import com.demo.fantasyleaguefm.fl.Teams.Arsenal;
 import com.demo.fantasyleaguefm.fl.Teams.Bou;
+import com.demo.fantasyleaguefm.fl.Teams.Burnley;
+import com.demo.fantasyleaguefm.fl.Teams.CP;
+import com.demo.fantasyleaguefm.fl.Teams.Chelsea;
+import com.demo.fantasyleaguefm.fl.Teams.Everton;
+import com.demo.fantasyleaguefm.fl.Teams.Hull;
+import com.demo.fantasyleaguefm.fl.Teams.Lexter;
+import com.demo.fantasyleaguefm.fl.Teams.Liverpool;
+import com.demo.fantasyleaguefm.fl.Teams.United;
 
 
 public class LeagueActivity extends AppCompatActivity {
@@ -137,7 +145,71 @@ public class LeagueActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Burnley.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Chelsea.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, CP.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Everton.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Hull.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Lexter.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Liverpool.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
 
+        button10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, United.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
 
 
         link.setOnClickListener(new View.OnClickListener() {

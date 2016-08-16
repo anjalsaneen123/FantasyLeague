@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,16 +16,15 @@ import com.demo.fantasyleaguefm.fl.R;
 
 import java.util.ArrayList;
 
-public class Bou extends AppCompatActivity {
+public class Hull extends AppCompatActivity {
 
     ArrayList<Players> PlayersList = new ArrayList<Players>();
     TextView name1,name2,name3,name4,name5,name6,name7,name8,total,score1,score2,score3,score4,score5,score6,score7,score8,title;
     ImageView a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8;
-    String  ch;
     Button home,away;
     RelativeLayout border;
 
-    int total_score=0,min=0,id;
+    int total_score=0,min=0,id=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +72,11 @@ public class Bou extends AppCompatActivity {
         b8=(ImageView) findViewById(R.id.b8);
 
         title = (TextView) findViewById(R.id.title);
-        title.setText("Bournemouth");
+        title.setText("Hull");
 
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("54268")){
+            if((PlayersList.get(i).getEntry()).equals("76599")){
                 name1.setText((PlayersList.get(i).getPlayer_name()));
                 score1.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -88,7 +86,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("221126")){
+            if((PlayersList.get(i).getEntry()).equals("131029")){
                 name2.setText((PlayersList.get(i).getPlayer_name()));
                 score2.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -100,7 +98,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("221390")){
+            if((PlayersList.get(i).getEntry()).equals("59165")){
                 name3.setText((PlayersList.get(i).getPlayer_name()));
                 score3.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -112,7 +110,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("221572")){
+            if((PlayersList.get(i).getEntry()).equals("975999")){
                 name4.setText((PlayersList.get(i).getPlayer_name()));
                 score4.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -124,7 +122,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("2318")){
+            if((PlayersList.get(i).getEntry()).equals("668118")){
                 name5.setText((PlayersList.get(i).getPlayer_name()));
                 score5.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -136,7 +134,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("280148")){
+            if((PlayersList.get(i).getEntry()).equals("1200237")){
                 name6.setText((PlayersList.get(i).getPlayer_name()));
                 score6.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -148,7 +146,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("271084")){
+            if((PlayersList.get(i).getEntry()).equals("1110042")){
                 name7.setText((PlayersList.get(i).getPlayer_name()));
                 score7.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -160,7 +158,7 @@ public class Bou extends AppCompatActivity {
         }
         for(int i=0;i<PlayersList.size();i++)
         {
-            if((PlayersList.get(i).getEntry()).equals("6001")){
+            if((PlayersList.get(i).getEntry()).equals("1524944")){
                 name8.setText((PlayersList.get(i).getPlayer_name()));
                 score8.setText(PlayersList.get(i).getGw_score());
                 total_score=total_score+Integer.parseInt(PlayersList.get(i).getGw_score());
@@ -402,7 +400,7 @@ public class Bou extends AppCompatActivity {
 
                 if(id==2){
                     name2.setTextColor(Color.parseColor("#fea400"));
-                    name2.setText(name2.getText()+" (VC)");
+                    name2.setText(name1.getText()+" (VC)");
 
                 }
                 else if(id==3){
@@ -543,7 +541,7 @@ public class Bou extends AppCompatActivity {
                 }
                 else if(id==2){
                     name2.setTextColor(Color.parseColor("#fea400"));
-                    name2.setText(name2.getText()+" (VC)");
+                    name2.setText(name3.getText()+" (VC)");
 
                 }
                 else if(id==4){
@@ -925,16 +923,16 @@ public class Bou extends AppCompatActivity {
         min=0;
         id=0;
 
-            min=Integer.parseInt(String.valueOf(score2.getText()));
-            id=2;
+        min=Integer.parseInt(String.valueOf(score2.getText()));
+        id=2;
 
         if (min>Integer.parseInt(String.valueOf(score3.getText()))){
             min=Integer.parseInt(String.valueOf(score3.getText()));
             id=3;
         }
-         if(min>Integer.parseInt(String.valueOf(score4.getText()))){
+        if(min>Integer.parseInt(String.valueOf(score4.getText()))){
             min=Integer.parseInt(String.valueOf(score4.getText()));
-             id=4;
+            id=4;
         }
         if (min>Integer.parseInt(String.valueOf(score5.getText()))){
             min=Integer.parseInt(String.valueOf(score5.getText()));
