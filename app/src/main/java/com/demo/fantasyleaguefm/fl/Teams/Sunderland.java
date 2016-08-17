@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class CP extends AppCompatActivity {
+public class Sunderland extends AppCompatActivity {
 
     ArrayList<Players> PlayersList = new ArrayList<Players>();
     TextView name1,name2,name3,name4,name5,name6,name7,total,score1,score2,score3,score4,score5,score6,score7,title;
@@ -92,16 +92,16 @@ public class CP extends AppCompatActivity {
 
 
         title = (TextView) findViewById(R.id.title);
-        title.setText("Crystal Palace");
+        title.setText("Sunderland");
 
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/23185");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/50968");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/374");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/54464");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/12606");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/982");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/3997");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/107074");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1312473");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1304034");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/618");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/678981");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/22065");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/219949");
 
     }
     public static String GET(String url){

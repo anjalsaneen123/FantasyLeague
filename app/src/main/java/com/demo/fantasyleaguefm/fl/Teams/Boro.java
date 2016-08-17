@@ -103,17 +103,18 @@ public class Boro extends AppCompatActivity {
         b8 = (ImageView) findViewById(R.id.b8);
 
         title = (TextView) findViewById(R.id.title);
-        title.setText("Middlesborough");
+        title.setText("Bournemouth");
 
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1050");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/32");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/52439");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/823");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry//24091");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/442458");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2144");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1396989");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/54268");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/221126");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/221390");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2318");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry//280148");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/271084");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6001");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/221572");
+
 
     }
     public static String GET(String url){
@@ -169,7 +170,8 @@ public class Boro extends AppCompatActivity {
 
                 score.add(object.getString("summary_event_points"));
                 hit.add(object.getString("extra_free_transfers"));
-                fname.add(object.getString("player_first_name"));
+                fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
+                        + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
                 fpl_total.add(object.getString("summary_overall_points"));
 

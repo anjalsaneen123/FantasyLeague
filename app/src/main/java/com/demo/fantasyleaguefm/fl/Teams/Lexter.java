@@ -95,13 +95,13 @@ public class Lexter extends AppCompatActivity {
         title.setText("Leicester");
 
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/76599");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/131029");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/59165");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/975999");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/668118");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1200237");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1110042");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/3763");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/57172");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/60760");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2476");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/53522");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/17211");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/61622");
 
     }
     public static String GET(String url){
@@ -157,7 +157,8 @@ public class Lexter extends AppCompatActivity {
 
                 score.add(object.getString("summary_event_points"));
                 hit.add(object.getString("extra_free_transfers"));
-                fname.add(object.getString("player_first_name"));
+                fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
+                        + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
                 fpl_total.add(object.getString("summary_overall_points"));
 

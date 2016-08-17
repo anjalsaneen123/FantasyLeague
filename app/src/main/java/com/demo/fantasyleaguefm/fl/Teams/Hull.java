@@ -169,7 +169,8 @@ public class Hull extends AppCompatActivity {
 
                 score.add(object.getString("summary_event_points"));
                 hit.add(object.getString("extra_free_transfers"));
-                fname.add(object.getString("player_first_name"));
+                fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
+                        + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
                 fpl_total.add(object.getString("summary_overall_points"));
 

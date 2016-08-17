@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class Middlesborough extends AppCompatActivity {
+public class Wba extends AppCompatActivity {
 
     ArrayList<Players> PlayersList = new ArrayList<Players>();
     TextView name1,name2,name3,name4,name5,name6,name7,name8,total,score1,score2,score3,score4,score5,score6,score7,score8,title;
@@ -103,17 +103,18 @@ public class Middlesborough extends AppCompatActivity {
         b8 = (ImageView) findViewById(R.id.b8);
 
         title = (TextView) findViewById(R.id.title);
-        title.setText("Middlesborough");
+        title.setText("West Brom");
 
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/609");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/843");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/30571");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/21041");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/309083");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/100811");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/3911");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/291868");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/42555");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/838589");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6530");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/48139");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/693713");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/27285");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/723324");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1221631");
+
 
     }
     public static String GET(String url){

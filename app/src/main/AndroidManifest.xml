@@ -30,7 +30,16 @@
         <activity android:name=".Teams.Liverpool" />
         <activity android:name=".Teams.Lexter" />
         <activity android:name=".Teams.United" />
-        <activity android:name=".Teams.ManCity"></activity>
+        <activity android:name=".Teams.ManCity" />
+        <activity android:name=".Teams.Sou" />
+        <activity android:name=".Teams.Stoke" />
+        <activity android:name=".Teams.Sunderland" />
+        <activity android:name=".Teams.Swe" />
+        <activity android:name=".Teams.Spurs" />
+        <activity android:name=".Teams.Wat" />
+        <activity android:name=".Teams.Wba" />
+        <activity android:name=".Teams.West" />
+        <activity android:name=".PointTable"></activity>
     </application>
 
 </manifest>

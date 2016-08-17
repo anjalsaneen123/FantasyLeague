@@ -99,7 +99,7 @@ public class United extends AppCompatActivity {
         new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/32");
         new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/52439");
         new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/823");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry//8167");
+        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/8167");
         new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/24091");
         new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/108");
 
@@ -157,7 +157,8 @@ public class United extends AppCompatActivity {
 
                 score.add(object.getString("summary_event_points"));
                 hit.add(object.getString("extra_free_transfers"));
-                fname.add(object.getString("player_first_name"));
+                fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
+                        + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
                 fpl_total.add(object.getString("summary_overall_points"));
 

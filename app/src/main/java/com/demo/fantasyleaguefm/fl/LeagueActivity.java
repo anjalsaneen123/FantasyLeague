@@ -30,6 +30,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.demo.fantasyleaguefm.fl.Teams.Arsenal;
+import com.demo.fantasyleaguefm.fl.Teams.Boro;
 import com.demo.fantasyleaguefm.fl.Teams.ManCity;
 import com.demo.fantasyleaguefm.fl.Teams.Middlesborough;
 import com.demo.fantasyleaguefm.fl.Teams.Burnley;
@@ -39,7 +40,15 @@ import com.demo.fantasyleaguefm.fl.Teams.Everton;
 import com.demo.fantasyleaguefm.fl.Teams.Hull;
 import com.demo.fantasyleaguefm.fl.Teams.Lexter;
 import com.demo.fantasyleaguefm.fl.Teams.Liverpool;
+import com.demo.fantasyleaguefm.fl.Teams.Sou;
+import com.demo.fantasyleaguefm.fl.Teams.Spurs;
+import com.demo.fantasyleaguefm.fl.Teams.Stoke;
+import com.demo.fantasyleaguefm.fl.Teams.Sunderland;
+import com.demo.fantasyleaguefm.fl.Teams.Swe;
 import com.demo.fantasyleaguefm.fl.Teams.United;
+import com.demo.fantasyleaguefm.fl.Teams.Wat;
+import com.demo.fantasyleaguefm.fl.Teams.Wba;
+import com.demo.fantasyleaguefm.fl.Teams.West;
 
 
 public class LeagueActivity extends AppCompatActivity {
@@ -47,7 +56,7 @@ public class LeagueActivity extends AppCompatActivity {
     ArrayList<Players> PlayerList = new ArrayList<Players>();
     ImageView button;
     ImageView button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,link;
-    ImageView button11,button12,button13,button14,button15,button16,button17,button18,button19,button20;
+    ImageView button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,point_table;
     RelativeLayout bg;
     int j=0,p=2;
     private ProgressBar spinner;
@@ -82,6 +91,8 @@ public class LeagueActivity extends AppCompatActivity {
         link = (ImageView) findViewById(R.id.link);
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         spinner.setVisibility(View.VISIBLE);
+
+        point_table=(ImageView) findViewById(R.id.point_table);
         // get reference to the views
 
 
@@ -110,7 +121,7 @@ public class LeagueActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeagueActivity.this, Middlesborough.class);
+                Intent intent = new Intent(LeagueActivity.this, Boro.class);
                 intent.putExtra("FILES_TO_SEND", PlayerList);
                 startActivity(intent);
             }
@@ -180,6 +191,14 @@ public class LeagueActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Middlesborough.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
         button11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +207,79 @@ public class LeagueActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Sou.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Stoke.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Sunderland.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Swe.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Spurs.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Wat.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button19.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, Wba.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+        button20.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, West.class);
+                intent.putExtra("FILES_TO_SEND", PlayerList);
+                startActivity(intent);
+            }
+        });
+
+        point_table.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeagueActivity.this, PointTable.class);
+                startActivity(intent);
+            }
+        });
+
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,6 +402,7 @@ public class LeagueActivity extends AppCompatActivity {
                     button18.setVisibility(View.VISIBLE);
                     button19.setVisibility(View.VISIBLE);
                     button20.setVisibility(View.VISIBLE);
+                    point_table.setVisibility(View.VISIBLE);
                     spinner.setVisibility(View.GONE);
                 }
             }
