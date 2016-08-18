@@ -199,6 +199,7 @@ public class Everton extends AppCompatActivity {
                     score8.setText(score.get(7));
 
                     total_score=Integer.parseInt(score.get(0))+Integer.parseInt(score.get(1))+Integer.parseInt(score.get(2))+
+                            Integer.parseInt(score.get(3))+
                             Integer.parseInt(score.get(4))+Integer.parseInt(score.get(5))+Integer.parseInt(score.get(6))+
                             Integer.parseInt(score.get(7));
                     total.setText(String.valueOf(total_score));
@@ -574,6 +575,9 @@ public class Everton extends AppCompatActivity {
                             score.set(1,"500");
 
                             int minindex=score.indexOf(Collections.min(score));
+
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -1093,5 +1097,16 @@ public class Everton extends AppCompatActivity {
         }
         return min;
 
+    }
+    public  int minn(ArrayList<String> ss){
+        int xxx=500;
+        int indx=0;
+        for(int i=0;i<8;i++){
+            if (Integer.parseInt(ss.get(i)) < xxx){
+                xxx=Integer.parseInt(ss.get(i));
+                indx=i;
+            }
+        }
+        return indx;
     }
 }

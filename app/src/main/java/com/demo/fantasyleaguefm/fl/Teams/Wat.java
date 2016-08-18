@@ -200,6 +200,7 @@ public class Wat extends AppCompatActivity {
                     score8.setText(score.get(7));
 
                     total_score=Integer.parseInt(score.get(0))+Integer.parseInt(score.get(1))+Integer.parseInt(score.get(2))+
+                            Integer.parseInt(score.get(3))+
                             Integer.parseInt(score.get(4))+Integer.parseInt(score.get(5))+Integer.parseInt(score.get(6))+
                             Integer.parseInt(score.get(7));
                     total.setText(String.valueOf(total_score));

@@ -57,6 +57,7 @@ public class LeagueActivity extends AppCompatActivity {
     ImageView button;
     ImageView button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,link;
     ImageView button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,point_table;
+    ImageView fb,insta;
     RelativeLayout bg;
     int j=0,p=2;
     private ProgressBar spinner;
@@ -91,6 +92,9 @@ public class LeagueActivity extends AppCompatActivity {
         link = (ImageView) findViewById(R.id.link);
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         spinner.setVisibility(View.VISIBLE);
+
+        fb=(ImageView) findViewById(R.id.fb);
+        insta=(ImageView)findViewById(R.id.insta);
 
         point_table=(ImageView) findViewById(R.id.point_table);
         // get reference to the views
@@ -288,6 +292,20 @@ public class LeagueActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/mullaaabid"));
+                startActivity(myIntent);
+            }
+        });
+        insta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MullaGoat"));
+                startActivity(myIntent);
+            }
+        });
 
     }
 
@@ -402,8 +420,11 @@ public class LeagueActivity extends AppCompatActivity {
                     button18.setVisibility(View.VISIBLE);
                     button19.setVisibility(View.VISIBLE);
                     button20.setVisibility(View.VISIBLE);
-                    point_table.setVisibility(View.VISIBLE);
                     spinner.setVisibility(View.GONE);
+
+                    fb.setVisibility(View.GONE);
+                    insta.setVisibility(View.GONE);
+                    bg.setBackgroundResource(R.drawable.cl);
                 }
             }
             catch (JSONException e)
