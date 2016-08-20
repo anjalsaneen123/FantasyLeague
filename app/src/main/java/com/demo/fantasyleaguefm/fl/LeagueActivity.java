@@ -30,7 +30,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.demo.fantasyleaguefm.fl.Teams.Arsenal;
-import com.demo.fantasyleaguefm.fl.Teams.Boro;
+import com.demo.fantasyleaguefm.fl.Teams.Bournemouth;
 import com.demo.fantasyleaguefm.fl.Teams.ManCity;
 import com.demo.fantasyleaguefm.fl.Teams.Middlesborough;
 import com.demo.fantasyleaguefm.fl.Teams.Burnley;
@@ -125,7 +125,7 @@ public class LeagueActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeagueActivity.this, Boro.class);
+                Intent intent = new Intent(LeagueActivity.this, Bournemouth.class);
                 intent.putExtra("FILES_TO_SEND", PlayerList);
                 startActivity(intent);
             }

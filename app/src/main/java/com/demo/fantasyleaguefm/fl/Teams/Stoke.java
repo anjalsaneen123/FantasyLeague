@@ -37,25 +37,27 @@ import java.util.Collections;
 public class Stoke extends AppCompatActivity {
 
     ArrayList<Players> PlayersList = new ArrayList<Players>();
-    TextView name1,name2,name3,name4,name5,name6,name7,total,score1,score2,score3,score4,score5,score6,score7,title;
-    ImageView a1,a2,a3,a4,a5,a6,a7;
+    TextView name1,name2,name3,name4,name5,name6,name7,name8,total,score1,score2,score3,score4,score5,score6,score7,score8,title;
+    ImageView a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8;
     int minindex;
     LinearLayout ll;
     ProgressBar pb;
     Button home,away;
     RelativeLayout border;
 
-    ArrayList<String> score = new ArrayList();
+    String current;
     ArrayList<String> hit = new ArrayList();
+
+    ArrayList<String> score = new ArrayList();
     ArrayList<String> fname = new ArrayList();
     ArrayList<String> lname = new ArrayList();
     ArrayList<String> fpl_total = new ArrayList<>();
-    int total_score=0,min=0,caoid=0,subid=0,state=0,vc=0,capscore;
+    int total_score=0,min=0,caoid=0,subid=0,state=0,stt=0,vc=0,capscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_united);
+        setContentView(R.layout.activity_arsenal);
 
         PlayersList = (ArrayList<Players>) getIntent().getSerializableExtra("FILES_TO_SEND");
 
@@ -66,6 +68,7 @@ public class Stoke extends AppCompatActivity {
         name5 = (TextView) findViewById(R.id.name5);
         name6 = (TextView) findViewById(R.id.name6);
         name7 = (TextView) findViewById(R.id.name7);
+        name8 = (TextView) findViewById(R.id.name8);
 
         pb = (ProgressBar) findViewById(R.id.progressBar1);
 
@@ -81,6 +84,7 @@ public class Stoke extends AppCompatActivity {
         score5 = (TextView) findViewById(R.id.score5);
         score6 = (TextView) findViewById(R.id.score6);
         score7 = (TextView) findViewById(R.id.score7);
+        score8 = (TextView) findViewById(R.id.score8);
 
         a1 = (ImageView) findViewById(R.id.a1);
         a2 = (ImageView) findViewById(R.id.a2);
@@ -89,19 +93,23 @@ public class Stoke extends AppCompatActivity {
         a5 = (ImageView) findViewById(R.id.a5);
         a6 = (ImageView) findViewById(R.id.a6);
         a7 = (ImageView) findViewById(R.id.a7);
+        a8 = (ImageView) findViewById(R.id.a8);
 
+        b1 = (ImageView) findViewById(R.id.b1);
+        b2 = (ImageView) findViewById(R.id.b2);
+        b3 = (ImageView) findViewById(R.id.b3);
+        b4 = (ImageView) findViewById(R.id.b4);
+        b5 = (ImageView) findViewById(R.id.b5);
+        b6 = (ImageView) findViewById(R.id.b6);
+        b7 = (ImageView) findViewById(R.id.b7);
+        b8 = (ImageView) findViewById(R.id.b8);
 
         title = (TextView) findViewById(R.id.title);
         title.setText("Stoke");
 
+        new HttpAsyncTaskDynamic().execute("https://fantasy.premierleague.com/drf/bootstrap-dynamic");
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/38081");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/582");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/798");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/414");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/132205");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/21019");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/282336");
+
 
     }
     public static String GET(String url){
@@ -156,7 +164,6 @@ public class Stoke extends AppCompatActivity {
                 JSONObject object  = jsonRootObject.getJSONObject("entry");
 
                 score.add(object.getString("summary_event_points"));
-                hit.add(object.getString("extra_free_transfers"));
                 fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
                         + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
@@ -164,7 +171,14 @@ public class Stoke extends AppCompatActivity {
 
                 Log.e("name: ",fname.get(0));
                 state++;
-                if (state == 7) {
+                if (state == 8) {
+
+
+                    for(int i=0;i<8;i++){
+                        score.set(i,String.valueOf(Integer.parseInt(score.get(i))-Integer.parseInt(hit.get(i))));
+                    }
+
+
                     ll.setVisibility(View.VISIBLE);
                     pb.setVisibility(View.GONE);
 
@@ -175,6 +189,7 @@ public class Stoke extends AppCompatActivity {
                     name5.setText(fname.get(4));
                     name6.setText(fname.get(5));
                     name7.setText(fname.get(6));
+                    name8.setText(fname.get(7));
 
                     score1.setText(score.get(0));
                     score2.setText(score.get(1));
@@ -183,10 +198,12 @@ public class Stoke extends AppCompatActivity {
                     score5.setText(score.get(4));
                     score6.setText(score.get(5));
                     score7.setText(score.get(6));
+                    score8.setText(score.get(7));
 
                     total_score=Integer.parseInt(score.get(0))+Integer.parseInt(score.get(1))+Integer.parseInt(score.get(2))+
                             Integer.parseInt(score.get(3))+
-                            Integer.parseInt(score.get(4))+Integer.parseInt(score.get(5))+Integer.parseInt(score.get(6));
+                            Integer.parseInt(score.get(4))+Integer.parseInt(score.get(5))+Integer.parseInt(score.get(6))+
+                            Integer.parseInt(score.get(7));
                     total.setText(String.valueOf(total_score));
 
                     a1.setOnClickListener(new View.OnClickListener() {
@@ -199,7 +216,15 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
                             caoid=1;
                             score.set(0,"500");
 
@@ -207,44 +232,6 @@ public class Stoke extends AppCompatActivity {
                             name1.setText(name1.getText()+" (C)");
 
                             capscore=Integer.parseInt(score1.getText().toString());
-
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
-
 
 
                             total_score=total_score+Integer.parseInt(score1.getText().toString());
@@ -263,7 +250,15 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             caoid=2;
                             score.set(1,"500");
@@ -272,43 +267,6 @@ public class Stoke extends AppCompatActivity {
 
                             name2.setTextColor(Color.parseColor("#00ff00"));
                             name2.setText(name2.getText()+" (C)");
-
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
 
 
                             total_score=total_score+Integer.parseInt(score2.getText().toString());
@@ -327,46 +285,18 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             caoid=3;
                             score.set(2,"500");
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
 
                             capscore=Integer.parseInt(score3.getText().toString());
 
@@ -390,49 +320,20 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             capscore=Integer.parseInt(score4.getText().toString());
 
                             caoid=4;
                             score.set(3,"500");
-
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
 
                             name4.setTextColor(Color.parseColor("#00ff00"));
                             name4.setText(name4.getText()+" (C)");
@@ -454,49 +355,20 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             capscore=Integer.parseInt(score5.getText().toString());
 
                             caoid=5;
                             score.set(4,"500");
-
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
 
                             name5.setTextColor(Color.parseColor("#00ff00"));
                             name5.setText(name5.getText()+" (C)");
@@ -518,49 +390,20 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             capscore=Integer.parseInt(score6.getText().toString());
 
                             caoid=6;
                             score.set(5,"500");
-
-                            int minindex=score.indexOf(Collections.min(score));
-                            Log.d("yyyyyyy:",String.valueOf(minindex));
-
-
-                            if(minindex==0){
-                                name1.setTextColor(Color.parseColor("#fea400"));
-                                name1.setText(name1.getText()+" (VC)");
-                            }
-                            else if(minindex==1){
-                                name2.setTextColor(Color.parseColor("#fea400"));
-                                name2.setText(name2.getText()+" (VC)");
-                            }
-                            else if(minindex==2){
-                                name3.setTextColor(Color.parseColor("#fea400"));
-                                name3.setText(name3.getText()+" (VC)");
-                            }
-                            else if(minindex==3){
-                                name4.setTextColor(Color.parseColor("#fea400"));
-                                name4.setText(name4.getText()+" (VC)");
-
-                            }
-                            else if(minindex==4){
-                                name5.setTextColor(Color.parseColor("#fea400"));
-                                name5.setText(name5.getText()+" (VC)");
-
-                            }
-                            else if(minindex==5){
-                                name6.setTextColor(Color.parseColor("#fea400"));
-                                name6.setText(name6.getText()+" (VC)");
-
-                            }else if(minindex==6){
-                                name7.setTextColor(Color.parseColor("#fea400"));
-                                name7.setText(name7.getText()+" (VC)");
-
-                            }
-                            total_score=total_score+Integer.parseInt(score.get(minindex));
 
                             name6.setTextColor(Color.parseColor("#00ff00"));
                             name6.setText(name6.getText()+" (C)");
@@ -582,14 +425,90 @@ public class Stoke extends AppCompatActivity {
                             a5.setVisibility(View.GONE);
                             a6.setVisibility(View.GONE);
                             a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
 
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b8.setVisibility(View.VISIBLE);
 
                             capscore=Integer.parseInt(score7.getText().toString());
 
                             caoid=7;
                             score.set(6,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            name7.setTextColor(Color.parseColor("#00ff00"));
+                            name7.setText(name7.getText()+" (C)");
+
+
+                            total_score=total_score+Integer.parseInt(score7.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), " Captain Score Doubled", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    });
+                    a8.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            a1.setVisibility(View.GONE);
+                            a2.setVisibility(View.GONE);
+                            a3.setVisibility(View.GONE);
+                            a4.setVisibility(View.GONE);
+                            a5.setVisibility(View.GONE);
+                            a6.setVisibility(View.GONE);
+                            a7.setVisibility(View.GONE);
+                            a8.setVisibility(View.GONE);
+                            a2.setClickable(false);
+
+                            b1.setVisibility(View.VISIBLE);
+                            b2.setVisibility(View.VISIBLE);
+                            b3.setVisibility(View.VISIBLE);
+                            b4.setVisibility(View.VISIBLE);
+                            b5.setVisibility(View.VISIBLE);
+                            b6.setVisibility(View.VISIBLE);
+                            b7.setVisibility(View.VISIBLE);
+
+                            capscore=Integer.parseInt(score8.getText().toString());
+
+                            caoid=8;
+                            score.set(7,"500");
+
+                            name8.setTextColor(Color.parseColor("#00ff00"));
+                            name8.setText(name8.getText()+" (C)");
+
+
+                            total_score=total_score+Integer.parseInt(score8.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), " Captain Score Doubled", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                    b1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name1.setTextColor(Color.parseColor("#ff0000"));
+                            name1.setText(name1.getText()+" (Sub)");
+
+
+                            subid=1;
+                            score.set(0,"500");
+
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -623,20 +542,474 @@ public class Stoke extends AppCompatActivity {
                                 name7.setTextColor(Color.parseColor("#fea400"));
                                 name7.setText(name7.getText()+" (VC)");
 
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
                             }
                             total_score=total_score+Integer.parseInt(score.get(minindex));
 
-                            name7.setTextColor(Color.parseColor("#00ff00"));
-                            name7.setText(name7.getText()+" (C)");
 
-
-                            total_score=total_score+Integer.parseInt(score7.getText().toString());
+                            total_score=total_score-Integer.parseInt(score1.getText().toString());
                             total.setText(String.valueOf(total_score));
-                            Toast.makeText(getBaseContext(), " Captain Score Doubled", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+
 
                         }
-
                     });
+
+                    b2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name2.setTextColor(Color.parseColor("#ff0000"));
+                            name2.setText(name2.getText()+" (Sub)");
+
+
+
+                            subid=2;
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+                            total_score=total_score-Integer.parseInt(score2.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    b3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name3.setTextColor(Color.parseColor("#ff0000"));
+                            name3.setText(name3.getText()+" (Sub)");
+
+                            subid=3;
+                            score.set(2,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+                            total_score=total_score-Integer.parseInt(score3.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    b4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name4.setTextColor(Color.parseColor("#ff0000"));
+                            name4.setText(name3.getText()+" (Sub)");
+
+
+                            subid=4;
+                            score.set(3,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+                            total_score=total_score-Integer.parseInt(score4.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    b5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name5.setTextColor(Color.parseColor("#ff0000"));
+                            name5.setText(name5.getText()+" (Sub)");
+
+                            subid=5;
+                            score.set(4,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+
+                            total_score=total_score-Integer.parseInt(score5.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    b6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name6.setTextColor(Color.parseColor("#ff0000"));
+                            name6.setText(name6.getText()+" (Sub)");
+
+                            subid=6;
+                            score.set(5,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+
+
+                            total_score=total_score-Integer.parseInt(score6.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    b7.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name7.setTextColor(Color.parseColor("#ff0000"));
+                            name7.setText(name7.getText()+" (Sub)");
+
+                            subid=7;
+                            score.set(6,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+
+                            total_score=total_score-Integer.parseInt(score7.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    b8.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            b1.setVisibility(View.GONE);
+                            b2.setVisibility(View.GONE);
+                            b3.setVisibility(View.GONE);
+                            b4.setVisibility(View.GONE);
+                            b5.setVisibility(View.GONE);
+                            b6.setVisibility(View.GONE);
+                            b7.setVisibility(View.GONE);
+                            b8.setVisibility(View.GONE);
+
+                            name8.setTextColor(Color.parseColor("#ff0000"));
+                            name8.setText(name8.getText()+" (Sub)");
+
+                            subid=8;
+                            score.set(7,"500");
+
+                            minindex=minn(score);
+
+                            Log.d("yyyyyyy:",String.valueOf(minindex));
+
+
+                            if(minindex==0){
+                                name1.setTextColor(Color.parseColor("#fea400"));
+                                name1.setText(name1.getText()+" (VC)");
+                            }
+                            else if(minindex==1){
+                                name2.setTextColor(Color.parseColor("#fea400"));
+                                name2.setText(name2.getText()+" (VC)");
+                            }
+                            else if(minindex==2){
+                                name3.setTextColor(Color.parseColor("#fea400"));
+                                name3.setText(name3.getText()+" (VC)");
+                            }
+                            else if(minindex==3){
+                                name4.setTextColor(Color.parseColor("#fea400"));
+                                name4.setText(name4.getText()+" (VC)");
+
+                            }
+                            else if(minindex==4){
+                                name5.setTextColor(Color.parseColor("#fea400"));
+                                name5.setText(name5.getText()+" (VC)");
+
+                            }
+                            else if(minindex==5){
+                                name6.setTextColor(Color.parseColor("#fea400"));
+                                name6.setText(name6.getText()+" (VC)");
+
+                            }else if(minindex==6){
+                                name7.setTextColor(Color.parseColor("#fea400"));
+                                name7.setText(name7.getText()+" (VC)");
+
+                            }else if(minindex==7){
+                                name8.setTextColor(Color.parseColor("#fea400"));
+                                name8.setText(name8.getText()+" (VC)");
+                            }
+                            total_score=total_score+Integer.parseInt(score.get(minindex));
+
+                            total_score=total_score-Integer.parseInt(score8.getText().toString());
+                            total.setText(String.valueOf(total_score));
+                            Toast.makeText(getBaseContext(), "Sub Score Reduced", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }
 
 
@@ -644,7 +1017,7 @@ public class Stoke extends AppCompatActivity {
             catch (JSONException e)
             {
                 e.printStackTrace();
-                Log.d("ArsenalPage:",e.toString());
+                Log.d("EvertonPage:",e.toString());
             }
 
         }
@@ -730,5 +1103,91 @@ public class Stoke extends AppCompatActivity {
         }
         return min;
 
+    }
+    public  int minn(ArrayList<String> ss){
+        int xxx=500;
+        int indx=0;
+        for(int i=0;i<8;i++){
+            if (Integer.parseInt(ss.get(i)) < xxx){
+                xxx=Integer.parseInt(ss.get(i));
+                indx=i;
+            }
+        }
+        return indx;
+    }
+    private class HttpAsyncTaskDynamic extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+                JSONObject jsonRootObject = new JSONObject(result);
+
+                current=jsonRootObject.getString("current-event");
+
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/107074/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1312473/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1304034/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/618/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/678981/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/22065/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/219949/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/818936/event/"+current+"/picks");
+
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
+    }
+
+    private class HttpAsyncTaskHit extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+
+                JSONObject jsonRootObject = new JSONObject(result);
+                JSONObject object  = jsonRootObject.getJSONObject("entry_history");
+
+                hit.add(object.getString("event_transfers_cost"));
+
+                stt++;
+                if(stt==8){
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/107074");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1312473");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1304034");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/618");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/678981");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/22065");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/219949");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/818936");
+                }
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
     }
 }

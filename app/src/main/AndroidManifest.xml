@@ -22,7 +22,7 @@
         <activity android:name=".Teams.Arsenal" />
         <activity android:name=".Teams.Middlesborough" />
         <activity android:name=".Teams.Burnley" />
-        <activity android:name=".Teams.Boro" />
+        <activity android:name=".Teams.Bournemouth" />
         <activity android:name=".Teams.Chelsea" />
         <activity android:name=".Teams.CP" />
         <activity android:name=".Teams.Everton" />

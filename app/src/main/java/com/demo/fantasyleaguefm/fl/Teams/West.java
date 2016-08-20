@@ -50,7 +50,8 @@ public class West extends AppCompatActivity {
     ArrayList<String> fname = new ArrayList();
     ArrayList<String> lname = new ArrayList();
     ArrayList<String> fpl_total = new ArrayList<>();
-    int total_score=0,min=0,caoid=0,subid=0,state=0,vc=0,capscore;
+    int total_score=0,min=0,caoid=0,stt=0,subid=0,state=0,vc=0,capscore;
+    String current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,14 +95,7 @@ public class West extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         title.setText("West Ham");
 
-
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/407");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/250657");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/85550");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6884");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1375680");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2597420");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2595816");
+        new HttpAsyncTaskDynamic().execute("https://fantasy.premierleague.com/drf/bootstrap-dynamic");
 
     }
     public static String GET(String url){
@@ -156,7 +150,6 @@ public class West extends AppCompatActivity {
                 JSONObject object  = jsonRootObject.getJSONObject("entry");
 
                 score.add(object.getString("summary_event_points"));
-                hit.add(object.getString("extra_free_transfers"));
                 fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
                         + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
@@ -165,6 +158,10 @@ public class West extends AppCompatActivity {
                 Log.e("name: ",fname.get(0));
                 state++;
                 if (state == 7) {
+
+                    for(int i=0;i<7;i++){
+                        score.set(i,String.valueOf(Integer.parseInt(score.get(i))-Integer.parseInt(hit.get(i))));
+                    }
                     ll.setVisibility(View.VISIBLE);
                     pb.setVisibility(View.GONE);
 
@@ -208,7 +205,7 @@ public class West extends AppCompatActivity {
 
                             capscore=Integer.parseInt(score1.getText().toString());
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -273,7 +270,8 @@ public class West extends AppCompatActivity {
                             name2.setTextColor(Color.parseColor("#00ff00"));
                             name2.setText(name2.getText()+" (C)");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -331,7 +329,8 @@ public class West extends AppCompatActivity {
 
                             caoid=3;
                             score.set(2,"500");
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -397,7 +396,7 @@ public class West extends AppCompatActivity {
                             caoid=4;
                             score.set(3,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -461,7 +460,7 @@ public class West extends AppCompatActivity {
                             caoid=5;
                             score.set(4,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -525,7 +524,7 @@ public class West extends AppCompatActivity {
                             caoid=6;
                             score.set(5,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -589,7 +588,7 @@ public class West extends AppCompatActivity {
                             caoid=7;
                             score.set(6,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -730,5 +729,90 @@ public class West extends AppCompatActivity {
         }
         return min;
 
+    }
+    public  int minn(ArrayList<String> ss){
+        int xxx=500;
+        int indx=0;
+        for(int i=0;i<8;i++){
+            if (Integer.parseInt(ss.get(i)) < xxx){
+                xxx=Integer.parseInt(ss.get(i));
+                indx=i;
+            }
+        }
+        return indx;
+    }
+
+    private class HttpAsyncTaskDynamic extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+                JSONObject jsonRootObject = new JSONObject(result);
+
+                current=jsonRootObject.getString("current-event");
+
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/407/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/250657/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/85550/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/6884/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1375680/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2597420/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2595816/event/"+current+"/picks");
+
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
+    }
+
+    private class HttpAsyncTaskHit extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+
+                JSONObject jsonRootObject = new JSONObject(result);
+                JSONObject object  = jsonRootObject.getJSONObject("entry_history");
+
+                hit.add(object.getString("event_transfers_cost"));
+
+                stt++;
+                if(stt==7){
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/407");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/250657");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/85550");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6884");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1375680");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2597420");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2595816");
+                }
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
     }
 }

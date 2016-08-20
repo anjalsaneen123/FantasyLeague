@@ -505,7 +505,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=1;
                             score.set(0,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -572,9 +573,9 @@ public class Chelsea extends AppCompatActivity {
 
 
                             subid=2;
-                            score.set(1,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -638,7 +639,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=3;
                             score.set(2,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -703,7 +705,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=4;
                             score.set(3,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -766,7 +769,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=5;
                             score.set(4,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -829,7 +833,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=6;
                             score.set(5,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -893,7 +898,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=7;
                             score.set(6,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -955,7 +961,8 @@ public class Chelsea extends AppCompatActivity {
                             subid=8;
                             score.set(7,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -1008,7 +1015,7 @@ public class Chelsea extends AppCompatActivity {
             catch (JSONException e)
             {
                 e.printStackTrace();
-                Log.d("ArsenalPage:",e.toString());
+                Log.d("EvertonPage:",e.toString());
             }
 
         }
@@ -1094,5 +1101,16 @@ public class Chelsea extends AppCompatActivity {
         }
         return min;
 
+    }
+    public  int minn(ArrayList<String> ss){
+        int xxx=500;
+        int indx=0;
+        for(int i=0;i<8;i++){
+            if (Integer.parseInt(ss.get(i)) < xxx){
+                xxx=Integer.parseInt(ss.get(i));
+                indx=i;
+            }
+        }
+        return indx;
     }
 }

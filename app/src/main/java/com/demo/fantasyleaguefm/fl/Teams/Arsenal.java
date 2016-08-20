@@ -45,12 +45,14 @@ public class Arsenal extends AppCompatActivity {
     Button home,away;
     RelativeLayout border;
 
-    ArrayList<String> score = new ArrayList();
+    String current;
     ArrayList<String> hit = new ArrayList();
+
+    ArrayList<String> score = new ArrayList();
     ArrayList<String> fname = new ArrayList();
     ArrayList<String> lname = new ArrayList();
     ArrayList<String> fpl_total = new ArrayList<>();
-    int total_score=0,min=0,caoid=0,subid=0,state=0,vc=0,capscore;
+    int total_score=0,min=0,caoid=0,subid=0,state=0,stt=0,vc=0,capscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,15 +107,9 @@ public class Arsenal extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         title.setText("Arsenal");
 
+        new HttpAsyncTaskDynamic().execute("https://fantasy.premierleague.com/drf/bootstrap-dynamic");
 
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/87572");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/324987");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/488926");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1135");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/66190");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/124075");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2144");
-        new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1396989");
+
 
     }
     public static String GET(String url){
@@ -168,7 +164,6 @@ public class Arsenal extends AppCompatActivity {
                 JSONObject object  = jsonRootObject.getJSONObject("entry");
 
                 score.add(object.getString("summary_event_points"));
-                hit.add(object.getString("extra_free_transfers"));
                 fname.add((object.getString("player_first_name")).substring(0,1).toUpperCase()+(object.getString("player_first_name")).substring(1)
                         + " " +(object.getString("player_last_name")).substring(0,1).toUpperCase());
                 lname.add(object.getString("player_last_name"));
@@ -177,6 +172,13 @@ public class Arsenal extends AppCompatActivity {
                 Log.e("name: ",fname.get(0));
                 state++;
                 if (state == 8) {
+
+
+                    for(int i=0;i<8;i++){
+                        score.set(i,String.valueOf(Integer.parseInt(score.get(i))-Integer.parseInt(hit.get(i))));
+                    }
+
+
                     ll.setVisibility(View.VISIBLE);
                     pb.setVisibility(View.GONE);
 
@@ -505,7 +507,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=1;
                             score.set(0,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -572,9 +575,9 @@ public class Arsenal extends AppCompatActivity {
 
 
                             subid=2;
-                            score.set(1,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -638,7 +641,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=3;
                             score.set(2,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -703,7 +707,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=4;
                             score.set(3,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
                             if(minindex==0){
@@ -766,7 +771,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=5;
                             score.set(4,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -829,7 +835,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=6;
                             score.set(5,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -893,7 +900,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=7;
                             score.set(6,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
                             if(minindex==0){
                                 name1.setTextColor(Color.parseColor("#fea400"));
@@ -955,7 +963,8 @@ public class Arsenal extends AppCompatActivity {
                             subid=8;
                             score.set(7,"500");
 
-                            int minindex=score.indexOf(Collections.min(score));
+                            minindex=minn(score);
+
                             Log.d("yyyyyyy:",String.valueOf(minindex));
 
 
@@ -1001,14 +1010,14 @@ public class Arsenal extends AppCompatActivity {
                         }
                     });
 
-            }
+                }
 
 
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
-                Log.d("ArsenalPage:",e.toString());
+                Log.d("EvertonPage:",e.toString());
             }
 
         }
@@ -1094,5 +1103,91 @@ public class Arsenal extends AppCompatActivity {
         }
         return min;
 
+    }
+    public  int minn(ArrayList<String> ss){
+        int xxx=500;
+        int indx=0;
+        for(int i=0;i<8;i++){
+            if (Integer.parseInt(ss.get(i)) < xxx){
+                xxx=Integer.parseInt(ss.get(i));
+                indx=i;
+            }
+        }
+        return indx;
+    }
+    private class HttpAsyncTaskDynamic extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+                JSONObject jsonRootObject = new JSONObject(result);
+
+                current=jsonRootObject.getString("current-event");
+
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/87572/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/324987/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/488926/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1135/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/66190/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/124075/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2144/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1396989/event/"+current+"/picks");
+
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
+    }
+
+    private class HttpAsyncTaskHit extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return GET(urls[0]);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+//            Log.d("RESULT:",result);
+            try
+            {
+
+                JSONObject jsonRootObject = new JSONObject(result);
+                JSONObject object  = jsonRootObject.getJSONObject("entry_history");
+
+                hit.add(object.getString("event_transfers_cost"));
+
+                stt++;
+                if(stt==8){
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/87572");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/324987");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/488926");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1135");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/66190");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/124075");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2144");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1396989");
+                }
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+                Log.d("LeagueActivity:",e.toString());
+            }
+
+        }
     }
 }

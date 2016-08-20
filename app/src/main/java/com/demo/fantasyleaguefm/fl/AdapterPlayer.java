@@ -203,7 +203,8 @@ public class AdapterPlayer extends ArrayAdapter<Players> {
                 i==414||
                 i==132205||
                 i==21019||
-                i==282336){
+                i==282336||
+                i==45985){
             return "Stoke";
         }
         else if(i==107074||
@@ -212,7 +213,8 @@ public class AdapterPlayer extends ArrayAdapter<Players> {
                 i==618||
                 i==678981||
                 i==22065||
-                i==219949){
+                i==219949||
+                i==818936){
             return "Sunderland";
         }
         else if(i==1201847||

@@ -40,7 +40,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button2"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/bou"/>
@@ -62,7 +62,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button4"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/che"/>
@@ -84,7 +84,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button6"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/ev"/>
@@ -106,7 +106,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button8"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/lei"/>
@@ -128,7 +128,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button10"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/city"/>
@@ -150,7 +150,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button12"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/boro"/>
@@ -172,7 +172,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button14"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/sto"/>
@@ -194,7 +194,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button16"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/swe"/>
@@ -216,7 +216,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button18"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/wat"/>
@@ -238,7 +238,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button20"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/wsh"/>
@@ -254,7 +254,7 @@
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/button"
-                    android:layout_width="180dp"
+                    android:layout_width="200dp"
                     android:layout_height="100dp"
                     android:src="@drawable/re"/>
 
