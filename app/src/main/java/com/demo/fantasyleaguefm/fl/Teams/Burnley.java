@@ -701,7 +701,7 @@ public class Burnley extends AppCompatActivity {
                             b8.setVisibility(View.GONE);
 
                             name4.setTextColor(Color.parseColor("#ff0000"));
-                            name4.setText(name3.getText()+" (Sub)");
+                            name4.setText(name4.getText()+" (Sub)");
 
 
                             subid=4;
