@@ -1131,14 +1131,14 @@ public class Stoke extends AppCompatActivity {
 
                 current=jsonRootObject.getString("current-event");
 
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/107074/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1312473/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1304034/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/618/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/678981/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/22065/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/219949/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/818936/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/38081/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/582/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/798/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/414/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/132205/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/21019/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/282336/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/45985/event/"+current+"/picks");
 
 
             }
@@ -1171,14 +1171,14 @@ public class Stoke extends AppCompatActivity {
 
                 stt++;
                 if(stt==8){
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/107074");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1312473");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1304034");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/618");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/678981");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/22065");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/219949");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/818936");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/38081");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/582");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/798");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/414");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/132205");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/21019");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/282336");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/45985");
                 }
 
             }

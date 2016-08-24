@@ -1132,12 +1132,12 @@ public class Burnley extends AppCompatActivity {
                 current=jsonRootObject.getString("current-event");
 
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/271511/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/324987/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/488926/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1135/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/66190/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/124075/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2144/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/136379/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/92015/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/325034/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/80606/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/83109/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/433374/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/442458/event/"+current+"/picks");
 
 
@@ -1172,12 +1172,12 @@ public class Burnley extends AppCompatActivity {
                 stt++;
                 if(stt==8){
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/271511");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/324987");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/488926");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1135");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/66190");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/124075");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2144");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/136379");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/92015");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/325034");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/80606");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/83109");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/433374");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/442458");
                 }
 
