@@ -1178,7 +1178,7 @@ public class Burnley extends AppCompatActivity {
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/80606");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/83109");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/433374");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/442458");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/433549");
                 }
 
             }
