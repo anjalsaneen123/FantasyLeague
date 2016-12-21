@@ -1133,11 +1133,11 @@ public class Stoke extends AppCompatActivity {
 
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/38081/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/582/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/798/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/6924/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/414/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/132205/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/21019/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/282336/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2000150/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/45985/event/"+current+"/picks");
 
 
@@ -1173,11 +1173,11 @@ public class Stoke extends AppCompatActivity {
                 if(stt==8){
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/38081");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/582");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/798");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6924");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/414");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/132205");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/21019");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/282336");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2000150");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/45985");
                 }
 

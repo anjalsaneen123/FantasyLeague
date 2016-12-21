@@ -1137,7 +1137,7 @@ public class Hull extends AppCompatActivity {
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/975999/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/668118/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1200237/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1110042/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/397650/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1524944/event/"+current+"/picks");
 
             }
@@ -1176,7 +1176,7 @@ public class Hull extends AppCompatActivity {
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/975999");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/668118");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1200237");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1110042");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/397650");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1524944");
                 }
 
