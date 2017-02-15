@@ -1132,7 +1132,7 @@ public class Lexter extends AppCompatActivity {
                 current=jsonRootObject.getString("current-event");
 
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/3763/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/57172/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/7228/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/60760/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2476/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/53522/event/"+current+"/picks");
@@ -1172,7 +1172,7 @@ public class Lexter extends AppCompatActivity {
                 stt++;
                 if(stt==8){
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/3763");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/57172");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/7228");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/60760");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2476");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/53522");
