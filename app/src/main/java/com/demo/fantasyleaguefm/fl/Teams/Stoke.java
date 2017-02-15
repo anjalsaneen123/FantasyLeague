@@ -1135,7 +1135,7 @@ public class Stoke extends AppCompatActivity {
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/582/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/6924/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/414/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/132205/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1941255/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/21019/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2000150/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/45985/event/"+current+"/picks");
@@ -1175,7 +1175,7 @@ public class Stoke extends AppCompatActivity {
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/582");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6924");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/414");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/132205");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1941255");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/21019");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2000150");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/45985");

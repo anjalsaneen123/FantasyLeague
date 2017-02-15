@@ -1138,7 +1138,7 @@ public class Bournemouth extends AppCompatActivity {
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/280148/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/271084/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/6001/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/221572/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/221927/event/"+current+"/picks");
 
 
             }
@@ -1178,7 +1178,7 @@ public class Bournemouth extends AppCompatActivity {
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry//280148");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/271084");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/6001");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/221572");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/221927");
                 }
 
             }

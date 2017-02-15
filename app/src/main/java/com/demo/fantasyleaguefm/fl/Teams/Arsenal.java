@@ -1138,7 +1138,7 @@ public class Arsenal extends AppCompatActivity {
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/66190/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/124075/event/"+current+"/picks");
                 new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/2144/event/"+current+"/picks");
-                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/1396989/event/"+current+"/picks");
+                new HttpAsyncTaskHit().execute("https://fantasy.premierleague.com/drf/entry/708/event/"+current+"/picks");
 
 
             }
@@ -1178,7 +1178,7 @@ public class Arsenal extends AppCompatActivity {
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/66190");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/124075");
                     new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/2144");
-                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/1396989");
+                    new HttpAsyncTask().execute("https://fantasy.premierleague.com/drf/entry/708");
                 }
 
             }
